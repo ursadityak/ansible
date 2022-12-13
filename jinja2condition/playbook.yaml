@@ -1,0 +1,21 @@
+---
+- name: jinja2 example
+  hosts: worker
+  tasks:
+  - block:
+    - name: main jinja2 template
+      template:
+       src: main.j2
+       dest: /home/student/details
+      register: report
+    rescue:
+    - name: call register variable
+      debug:
+       var: report
+    - name: alternate jinja2 template
+      template:
+       src: alternate.j2
+       dest: /home/student/details
+...
+
+

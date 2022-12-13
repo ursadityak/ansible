@@ -1,0 +1,10 @@
+---
+- name: create user
+  hosts: worker
+  vars_files:
+  - vars/users.yaml                                                                                                                       
+  tasks:
+  - name: create user {{ user }}
+    user:
+     name: "{{ user }}"
+...

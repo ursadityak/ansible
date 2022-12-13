@@ -1,0 +1,19 @@
+---
+- name: use loops
+  hosts: worker
+  vars: 
+   packages: #List
+   - httpd
+   - git
+  tasks:
+  - name: install packages
+    yum: 
+     name: "{{ item }}"
+     state: latest
+    loop: "{{ packages }}"
+  - name: start httpd service
+    service:
+     name: httpd
+     state: started
+     enabled: true
+...

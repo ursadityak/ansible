@@ -1,0 +1,15 @@
+---
+- name: test loops in playbook
+  hosts: worker
+  tasks: 
+  - name: add users to groups
+    user:
+     name: "{{ item.name }}"
+     state: present
+     groups: "{{ item.group }}"
+    loop:
+    - name: jim
+      group: wheel
+    - name: jake
+      group: wheel
+...

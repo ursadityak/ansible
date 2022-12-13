@@ -1,0 +1,27 @@
+---
+- name: implement block, rescue and always
+  hosts: worker
+  tasks:
+  - name: setup web server
+    block:
+    - name: install http
+      yum:
+       name: http
+       state: latest
+    rescue:
+    - name: install httpd
+      yum:
+       name: httpd
+       state: latest
+    always:
+    - name: copy index.html
+      copy:
+       content: "block rescue always"
+       dest: /var/www/html/index.html
+    - name: start apache httpd service
+      service:
+       name: httpd
+       state: started
+       enabled: true
+...
+

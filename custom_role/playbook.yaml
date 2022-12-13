@@ -1,0 +1,18 @@
+---
+- name: execute a role to host web page
+  hosts: worker
+  pre_tasks:
+  - name: start of role execution
+    debug:
+     msg: "role execution begins here"
+  roles:
+  - samplewebpage
+  post_tasks:
+  - name: end of role execution
+    debug:
+     msg: "role execution ends here"
+  - name: host web page
+    copy:
+     src: samplewebpage/files/
+     dest: /var/www/html/
+...

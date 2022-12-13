@@ -1,0 +1,12 @@
+- name: use roles
+  hosts: worker
+  roles:
+  - rhel-system-roles.timesync
+  post_tasks:
+  - name: set timezone
+    timezone:
+     name: Asia/Tokyo
+    notify: reboot host
+  handlers:
+  - name: reboot host
+    reboot: 

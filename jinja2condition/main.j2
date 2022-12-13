@@ -1,0 +1,4 @@
+hostname: {{ ansible_facts['hostname']  }}
+total memory: {{ ansible_facts['memtotal_mb'] }}
+size of disk sda {{ ansible_facts['devices']['sda']['size'] }}
+size of disk sdb {{ ansible_facts['devices']['sdb']['size'] }}

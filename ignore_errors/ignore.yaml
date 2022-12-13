@@ -1,0 +1,10 @@
+---
+- name: ignoring errors
+  hosts: worker
+  tasks:
+  - name: example
+    yum: 
+     name: tester
+     state: latest
+    ignore_errors: yes
+...

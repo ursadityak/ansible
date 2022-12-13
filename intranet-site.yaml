@@ -1,0 +1,30 @@
+---                                 
+- name: host a web page                    
+  hosts: worker                     
+  tasks:                            
+  - name: download apache HTTPD package    
+    yum:                            
+     name: httpd                    
+     state: latest                  
+  - name: start httpd service              
+    service:                        
+     name: httpd                    
+     state: started                 
+     enabled: true                  
+  - name: copy index.html to /var/www/html/
+    copy:                           
+     src: index.html                
+     dest: /var/www/html/index.html
+- name: verify website from master node
+  hosts: localhost
+  become: no
+  tasks:
+  - name: verify site on worker1
+    uri:
+     url: http://worker1              
+     return_content: true
+  - name: verify site on worker2
+    uri:
+     url: http://worker2
+     return_content: true                   
+...      

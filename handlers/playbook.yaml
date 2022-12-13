@@ -1,0 +1,25 @@
+---
+- name: implement notify and handlers
+  hosts: worker
+  tasks:
+  - name: install httpd
+    yum:
+     name: httpd
+     state: latest
+  - name: start service
+    service: 
+     name: httpd
+     state: started
+     enabled: true
+  - name: copy web pages to remote device
+    copy:
+     src: index.html
+     dest: /var/www/html/index.html
+    notify: 
+    - restart apache service
+  handlers:
+  - name: restart apache service
+    service:
+     name: httpd
+     state: restarted
+...

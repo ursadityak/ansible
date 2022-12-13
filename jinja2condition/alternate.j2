@@ -1,0 +1,6 @@
+hostname: {{ ansible_facts['hostname']  }}
+total memory: {{ ansible_facts['memtotal_mb'] }}
+size of disk sda {{ ansible_facts['devices']['sda']['size'] }}
+{% if 'AnsibleUndefinedVariable' in report.msg %}
+disk sdb does not exist
+{% endif %}

@@ -1,0 +1,12 @@
+---
+- name: use jinja2 to create templates
+  hosts: worker
+  tasks:
+  - name: create /etc/myhosts file in {{ ansible_facts['hostname'] }}
+    template:
+     src: hosts.j2
+     dest: /home/student/hosts
+  - name: print some facts
+    debug:
+     msg: "{{ group_names }}"  
+...

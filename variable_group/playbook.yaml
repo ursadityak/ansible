@@ -1,0 +1,8 @@
+---
+- name: create user account
+  hosts: worker
+  tasks: 
+  - name: create user "{{username}}"
+    user:
+     name: "{{username}}"
+...

@@ -1,0 +1,15 @@
+worker1
+worker2
+
+[worker]
+worker[1:2]
+
+[servers]
+server[a:d]
+
+#adding groups as members of another group
+[linux:children]
+worker
+servers
+
+

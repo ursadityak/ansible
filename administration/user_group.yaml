@@ -1,0 +1,15 @@
+---
+- name: add user to a group
+  hosts: worker
+  tasks:
+  - name: create group
+    group:
+     name: testgroup
+     state: present
+  - name: create user and add user to group
+    user:
+     name: testuser
+     state: present
+     groups: testgroup
+     append: true
+...

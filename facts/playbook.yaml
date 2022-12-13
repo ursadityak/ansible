@@ -1,0 +1,14 @@
+---
+- name: collect facts
+  hosts: worker
+  gather_facts: no                                                                                                                        
+  tasks:
+  - name: collect facts
+    setup:
+  - name: display facts
+    debug:
+     var: ansible_facts
+  - name: display single fact
+    debug:
+     msg: "{{ ansible_distribution }}"
+...

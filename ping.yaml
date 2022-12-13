@@ -1,0 +1,8 @@
+---
+- name: check ping coonectivity on worker nodes 
+  hosts: worker
+  tasks:
+  - name: run ping module
+    ping: 
+
+...

@@ -1,0 +1,10 @@
+---
+- name: start and stop services
+  hosts: worker
+  tasks: 
+  - name: start/stop a service
+    service:
+     name: chronyd
+     state: started
+     enabled: true
+...

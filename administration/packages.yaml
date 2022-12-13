@@ -1,0 +1,11 @@
+---
+- name: install packages
+  hosts: worker
+  tasks: 
+  - name: install 2 packages
+    yum: 
+     name:
+     - httpd
+     - "@Development tools"
+     state: present
+...

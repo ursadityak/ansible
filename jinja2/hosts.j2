@@ -1,0 +1,5 @@
+{#ThIS COnTent is managed by ansible#}
+{% for host in groups['worker'] %}
+{{ hostvars[host]['ansible_facts']['default_ipv4']['address'] }} {{ hostvars[host]['ansible_facts']['hostname'] }} 
+{% endfor %}
+

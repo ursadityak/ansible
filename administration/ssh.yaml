@@ -1,0 +1,10 @@
+---
+- name: authorized keys using YAML
+  hosts: worker
+  tasks:
+  - name: transfer key to managed host
+    authorized_key:
+     user: testuser
+     state: present
+     key: "{{ lookup('file', '/home/student/.ssh/id_rsa.pub') }}"
+...
